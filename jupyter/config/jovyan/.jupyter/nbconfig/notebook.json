@@ -1,0 +1,15 @@
+{
+  "load_extensions": {
+    "hinterland/hinterland": true,
+    "toc2/main": true,
+    "codefolding/main": true,
+    "splitcell/splitcell": true,
+    "notify/notify": true,
+    "runtools/main": true,
+    "code_prettify/code_prettify": true,
+    "hide_input_all/main": true,
+    "autosavetime/main": true
+  },
+  "autosavetime_starting_interval": "1",
+  "autosavetime_set_starting_interval": true
+}
