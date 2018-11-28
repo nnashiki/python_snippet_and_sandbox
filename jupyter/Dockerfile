@@ -12,7 +12,8 @@ RUN pip install -U pip \
     pathlib \
     pandas-gbq \
     tqdm \
-    ipywidgets
+    ipywidgets \
+    yapf
 
 # 日本語フォントを入れる
 ENV HOME="/home/jovyan"
