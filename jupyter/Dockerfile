@@ -5,7 +5,7 @@ ARG GITHUB_TOKEN
 ARG LOCAL_UID
 ARG LOCAL_GID
 
-LABEL maintainer "nashiki <niten.nashiki@sensy.ai>"
+LABEL maintainer "nnashiki <n.nashiki.work@gmail.com>"
 
 # pythonモジュールのinstall
 RUN pip install -U pip \
