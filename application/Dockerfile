@@ -4,3 +4,15 @@ FROM python:3.7
 LABEL  maintainer "nnashiki <n.nashiki.work@gmail.com>"
 
 COPY main /main
+
+WORKDIR main
+
+RUN pip install --upgrade pip
+RUN pip install pipenv
+
+COPY main/Pipfile Pipfile
+
+
+RUN pipenv install --system --skip-lock
+
+

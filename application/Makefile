@@ -12,10 +12,12 @@ application-build-no-cache:
 
 application-bash: application-build
 	docker run -it --rm --name $(APPLICATION_CONTAINER_NAME) \
-	 $(APPLICATION_CONTAINER_NAME):0.1 \
+	$(pwd)/main:main \
+	$(APPLICATION_CONTAINER_NAME):0.1 \
 	bash
 
 application-run: application-build
 	docker run -it --rm --name $(APPLICATION_CONTAINER_NAME) \
-	 $(APPLICATION_CONTAINER_NAME):0.1 \
-	python main/$(PYTHON_FILE)
+	-v `pwd`/main:/main \
+	$(APPLICATION_CONTAINER_NAME):0.1 \
+	pipenv lock
