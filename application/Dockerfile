@@ -12,7 +12,8 @@ RUN pip install pipenv
 
 COPY main/Pipfile Pipfile
 
-
-RUN pipenv install --system --skip-lock
+ARG UPDATE_LOCK
+RUN if [ -z "$UPDATE_LOCK" ]; then pipenv install --system --deploy\
+    else pipenv install --system --skip-lock;fi
 
 
