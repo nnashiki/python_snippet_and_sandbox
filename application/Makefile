@@ -12,7 +12,7 @@ application-build-no-cache:
 
 application-bash: application-build
 	docker run -it --rm --name $(APPLICATION_CONTAINER_NAME) \
-	$(pwd)/main:main \
+	-v `pwd`/main:/main \
 	$(APPLICATION_CONTAINER_NAME):0.1 \
 	bash
 
