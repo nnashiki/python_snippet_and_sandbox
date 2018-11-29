@@ -1,3 +1,5 @@
+PYTHON_FILE := $(PYTHON_FILE)
+
 USER_GH_NAME =
 APPLICATION_IMAGE_NAME = python_application
 APPLICATION_CONTAINER_NAME = python_application
@@ -8,7 +10,12 @@ application-build:
 application-build-no-cache:
 	ls
 
-application-run: application-build
+application-bash: application-build
 	docker run -it --rm --name $(APPLICATION_CONTAINER_NAME) \
 	 $(APPLICATION_CONTAINER_NAME):0.1 \
 	bash
+
+application-run: application-build
+	docker run -it --rm --name $(APPLICATION_CONTAINER_NAME) \
+	 $(APPLICATION_CONTAINER_NAME):0.1 \
+	python main/$(PYTHON_FILE)
