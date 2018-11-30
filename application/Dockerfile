@@ -4,16 +4,16 @@ FROM python:3.7
 LABEL  maintainer "nnashiki <n.nashiki.work@gmail.com>"
 
 COPY main /main
-
 WORKDIR main
 
-RUN pip install --upgrade pip
-RUN pip install pipenv
+RUN pip install --upgrade pip && pip --version
+RUN pip install pipenv && pipenv --version
 
 COPY main/Pipfile Pipfile
+COPY main/Pipfile.lock Pipfile.lock
 
 ARG UPDATE_LOCK
-RUN if [ -z "$UPDATE_LOCK" ]; then pipenv install --system --deploy\
-    else pipenv install --system --skip-lock;fi
+RUN pipenv install --system
+
 
 
