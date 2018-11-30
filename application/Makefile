@@ -2,17 +2,25 @@ PYTHON_FILE := $(PYTHON_FILE)
 
 USER_GH_NAME = nnashiki
 IMAGE_NAME = python_application
+IMAGE_NAME_BASE = $(IMAGE_NAME)_base
 CONTAINER_NAME = python_application
 
-application-build:
-	docker build . --build-arg GITHUB_USER=$(USER_GH_NAME)\
+application-build-base:
+	docker build . -f docker/Dockerfile_base\
+	 --build-arg GITHUB_USER=$(USER_GH_NAME)\
+	 --build-arg GITHUB_TOKEN=$(GH_TOKEN)\
+	 -t $(IMAGE_NAME_BASE):0.1
+
+application-build: application-build-base
+	docker build . -f docker/Dockerfile\
+	 --build-arg GITHUB_USER=$(USER_GH_NAME)\
 	 --build-arg GITHUB_TOKEN=$(GH_TOKEN)\
 	 -t $(IMAGE_NAME):0.1
 
-application-build-update-dependency:
-	docker build . --build-arg GITHUB_USER=$(USER_GH_NAME)\
+application-build-update-dependency: application-build-base
+	docker build . -f docker/Dockerfile_update_dependency\
+	 --build-arg GITHUB_USER=$(USER_GH_NAME)\
 	 --build-arg GITHUB_TOKEN=$(GH_TOKEN)\
-	 --build-arg UPDATE_LOCK=1\
 	 -t $(IMAGE_NAME):0.1
 
 application-build-no-cache:
