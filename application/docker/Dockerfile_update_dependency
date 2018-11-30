@@ -1,5 +1,5 @@
 # Pythonは公式イメージ
-FROM python_application:0.1
+FROM python_application_base:0.1
 
 LABEL  maintainer "nnashiki <n.nashiki.work@gmail.com>"
 
