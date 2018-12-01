@@ -3,6 +3,7 @@ PYTHON_FILE := $(PYTHON_FILE)
 USER_GH_NAME = nnashiki
 IMAGE_NAME = python_application
 IMAGE_NAME_BASE = $(IMAGE_NAME)_base
+IMAGE_NAME_PIPENV = $(IMAGE_NAME)_pipenv
 CONTAINER_NAME = python_application
 
 application-build-base:
@@ -22,6 +23,13 @@ application-build-update-dependency: application-build-base
 	 --build-arg GITHUB_USER=$(USER_GH_NAME)\
 	 --build-arg GITHUB_TOKEN=$(GH_TOKEN)\
 	 -t $(IMAGE_NAME):0.1
+
+application-build-pipenv-gragh: application-build-base
+	docker build . -f docker/Dockerfile_pipenv_gragh\
+	 --no-cache \
+	 --build-arg GITHUB_USER=$(USER_GH_NAME)\
+	 --build-arg GITHUB_TOKEN=$(GH_TOKEN)\
+	 -t $(IMAGE_NAME_PIPENV):0.1
 
 application-build-no-cache:
 	docker build . --no-cache \
@@ -46,3 +54,9 @@ application-run: application-build
 	-v `pwd`/main:/main \
 	$(IMAGE_NAME):0.1 \
 	python $(PYTHON_FILE)
+
+application-graph: application-build-pipenv-gragh
+	docker run -it --rm --name $(CONTAINER_NAME) \
+	-v `pwd`/main:/main \
+	$(IMAGE_NAME_PIPENV):0.1 \
+	pipenv graph
