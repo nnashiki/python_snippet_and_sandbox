@@ -10,4 +10,4 @@ COPY main/Pipfile Pipfile
 COPY main/Pipfile.lock Pipfile.lock
 
 RUN set -x && \
-    pipenv install
+    pipenv install --system
