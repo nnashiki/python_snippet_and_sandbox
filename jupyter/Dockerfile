@@ -13,7 +13,8 @@ RUN pip install -U pip \
     pandas-gbq \
     tqdm \
     ipywidgets \
-    yapf
+    yapf \
+    pymysql
 
 # 日本語フォントを入れる
 ENV HOME="/home/jovyan"
