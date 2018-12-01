@@ -7,7 +7,6 @@ COPY main /main
 WORKDIR main
 
 COPY main/Pipfile Pipfile
-COPY main/Pipfile.lock Pipfile.lock
 
 RUN set -x && \
     pipenv install --system --skip-lock
