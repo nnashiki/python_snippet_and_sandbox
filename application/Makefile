@@ -32,7 +32,8 @@ application-build-pipenv-gragh: application-build-base
 	 -t $(IMAGE_NAME_PIPENV):0.1
 
 application-build-no-cache:
-	docker build . --no-cache \
+	docker build . -f docker/Dockerfile\
+	 --no-cache \
 	 --build-arg GITHUB_USER=$(USER_GH_NAME)\
 	 --build-arg GITHUB_TOKEN=$(GH_TOKEN)\
 	 -t $(IMAGE_NAME):0.1
