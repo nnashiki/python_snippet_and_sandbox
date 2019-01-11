@@ -14,28 +14,20 @@ application-build-base:
 
 application-build: application-build-base
 	docker build . -f docker/Dockerfile\
-	 --build-arg GITHUB_USER=$(USER_GH_NAME)\
-	 --build-arg GITHUB_TOKEN=$(GH_TOKEN)\
 	 -t $(IMAGE_NAME):0.1
 
 application-build-update-dependency: application-build-base
 	docker build . -f docker/Dockerfile_update_dependency\
-	 --build-arg GITHUB_USER=$(USER_GH_NAME)\
-	 --build-arg GITHUB_TOKEN=$(GH_TOKEN)\
 	 -t $(IMAGE_NAME):0.1
 
 application-build-pipenv-gragh: application-build-base
 	docker build . -f docker/Dockerfile_pipenv_gragh\
 	 --no-cache \
-	 --build-arg GITHUB_USER=$(USER_GH_NAME)\
-	 --build-arg GITHUB_TOKEN=$(GH_TOKEN)\
 	 -t $(IMAGE_NAME_PIPENV):0.1
 
 application-build-no-cache:
 	docker build . -f docker/Dockerfile\
 	 --no-cache \
-	 --build-arg GITHUB_USER=$(USER_GH_NAME)\
-	 --build-arg GITHUB_TOKEN=$(GH_TOKEN)\
 	 -t $(IMAGE_NAME):0.1
 
 application-bash: application-build
