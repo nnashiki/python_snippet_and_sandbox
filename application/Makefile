@@ -33,7 +33,7 @@ application-build-update-dependency: application-build-base
 
 application-update-dependency: application-build-update-dependency
 	docker run -it --rm --name $(CONTAINER_NAME) \
-	-v `pwd`/main:/main \
+	-v `pwd`/app:/usr/src/app \
 	$(IMAGE_NAME):0.1 \
 	pipenv lock
 
@@ -47,26 +47,26 @@ application-build-pipenv-gragh: application-build-base
 
 application-graph: application-build-pipenv-gragh
 	docker run -it --rm --name $(CONTAINER_NAME) \
-	-v `pwd`/main:/main \
+	-v `pwd`/app:/usr/src/app \
 	$(IMAGE_NAME_PIPENV):0.1 \
 	pipenv graph
 
 
 application-bash: application-build
 	docker run -it --rm --name $(CONTAINER_NAME) \
-	-v `pwd`/main:/main \
+	-v `pwd`/app:/usr/src/app \
 	$(IMAGE_NAME):0.1 \
 	bash
 
 application-run: application-build
 	docker run -it --rm --name $(CONTAINER_NAME) \
-	-v `pwd`/main:/main \
+	-v `pwd`/app:/usr/src/app \
 	$(IMAGE_NAME):0.1 \
 	python $(PYTHON_FILE)
 
 application-test: application-build
 	docker run -it --rm --name $(CONTAINER_NAME) \
-	-v `pwd`/main:/main \
+	-v `pwd`/app:/usr/src/app \
 	$(IMAGE_NAME):0.1 \
 	python test.py
 

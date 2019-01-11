@@ -3,11 +3,11 @@ FROM python_application_base:0.1
 
 LABEL  maintainer "nnashiki <n.nashiki.work@gmail.com>"
 
-COPY main /main
-WORKDIR main
+COPY app /usr/src/app
+WORKDIR /usr/src/app
 
-COPY main/Pipfile Pipfile
-COPY main/Pipfile.lock Pipfile.lock
+COPY app/Pipfile Pipfile
+COPY app/Pipfile.lock Pipfile.lock
 
 RUN set -x && \
     pipenv install --system
