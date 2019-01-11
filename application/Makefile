@@ -49,7 +49,7 @@ app-graph: app-build-pipenv-gragh
 	docker run -it --rm --name $(CONTAINER_NAME) \
 	-v `pwd`/app:/usr/src/app \
 	$(IMAGE_NAME_PIPENV):0.1 \
-	pipenv graph
+	pipenv graph --json-tree > graph.json
 
 
 app-bash: app-build
