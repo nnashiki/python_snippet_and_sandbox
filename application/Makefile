@@ -64,3 +64,9 @@ application-run: application-build
 	$(IMAGE_NAME):0.1 \
 	python $(PYTHON_FILE)
 
+application-test: application-build
+	docker run -it --rm --name $(CONTAINER_NAME) \
+	-v `pwd`/main:/main \
+	$(IMAGE_NAME):0.1 \
+	python test.py
+
