@@ -9,5 +9,6 @@ WORKDIR /usr/src/app
 COPY app/Pipfile Pipfile
 COPY app/Pipfile.lock Pipfile.lock
 
+# systemのpipを使うために、pipenv syncではなく --system --deploy を使用している
 RUN set -x && \
-    pipenv install --system
+    pipenv install --system --deploy
