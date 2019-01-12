@@ -68,5 +68,5 @@ app-test: app-build
 	docker run -it --rm --name $(CONTAINER_NAME) \
 	-v `pwd`/app:/usr/src/app \
 	$(IMAGE_NAME):0.1 \
-	python test.py
+	python test/test.py
 
