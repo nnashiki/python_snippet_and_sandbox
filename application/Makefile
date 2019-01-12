@@ -15,7 +15,7 @@ app-build-base:
 	 --build-arg GITHUB_TOKEN=$(GH_TOKEN)\
 	 -t $(IMAGE_NAME_BASE):0.1
 
-app-build: app-build-base
+app-build:
 	docker build . -f docker/Dockerfile\
 	 -t $(IMAGE_NAME):0.1
 
