@@ -35,7 +35,7 @@ app-update-dependency: app-build-update-dependency
 	docker run -it --rm --name $(CONTAINER_NAME) \
 	-v `pwd`/app:/usr/src/app \
 	$(IMAGE_NAME):0.1 \
-	pipenv lock
+	pipenv lock --pre
 
 # -------------------
 # pipenv-gragh
@@ -63,6 +63,12 @@ app-run: app-build
 	-v `pwd`/app:/usr/src/app \
 	$(IMAGE_NAME):0.1 \
 	python $(PYTHON_FILE)
+
+responder-run: app-build
+	docker run -it --rm --name $(CONTAINER_NAME) \
+	-v `pwd`/app:/usr/src/app \
+	$(IMAGE_NAME):0.1 \
+	python hello.py
 
 app-test: app-build
 	docker run -it --rm --name $(CONTAINER_NAME) \

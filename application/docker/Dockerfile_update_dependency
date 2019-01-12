@@ -9,4 +9,4 @@ WORKDIR /usr/src/app
 COPY app/Pipfile Pipfile
 
 RUN set -x && \
-    pipenv install --system --skip-lock
+    pipenv install --system --skip-lock --pre
