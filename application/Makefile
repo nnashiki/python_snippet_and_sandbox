@@ -65,8 +65,11 @@ app-run: app-build
 	python $(PYTHON_FILE)
 
 responder-run: app-build
-	docker run -it --rm --name $(CONTAINER_NAME) \
+	- docker stop $(CONTAINER_NAME)
+	docker run -it --rm \
+	--name $(CONTAINER_NAME) \
 	-v `pwd`/app:/usr/src/app \
+	-p 5042:5042 \
 	$(IMAGE_NAME):0.1 \
 	python hello.py
 
