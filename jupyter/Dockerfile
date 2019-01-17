@@ -15,7 +15,8 @@ RUN pip install -U pip \
     ipywidgets \
     yapf \
     pymysql\
-    bokeh
+    bokeh \
+    gin-config
 
 # 日本語フォントを入れる
 ENV HOME="/home/jovyan"
