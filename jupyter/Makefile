@@ -16,6 +16,9 @@ jupyter-run: jupyter-build
 	 $(JUPYTER_IMAGE_NAME):0.1 \
 	jupyter notebook --NotebookApp.iopub_data_rate_limit=1.0e10
 
+jupyter-refresh:
+	rm -r note/.ipynb_checkpoints
+
 jupyter-bash: jupyter-build
 	docker run -it --rm --name $(JUPYTER_CONTAINER_NAME) -p 7777:8888 \
 	-v `pwd`/note:/home/jovyan/work -v `pwd`/config:/home \
