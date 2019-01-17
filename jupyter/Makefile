@@ -9,7 +9,8 @@ jupyter-build-no-cache:
 	ls
 
 jupyter-run: jupyter-build
-	docker run -it --rm --name $(JUPYTER_CONTAINER_NAME) -p 7777:8888 \
+	docker run -it --rm --name $(JUPYTER_CONTAINER_NAME) \
+	-p 8888:8888 \
 	-v `pwd`/note:/home/jovyan/work -v `pwd`/config:/home \
 	--link baseball_db:baseball_db \
 	 $(JUPYTER_IMAGE_NAME):0.1 \
