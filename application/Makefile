@@ -71,7 +71,7 @@ responder-run: app-build
 	-v `pwd`/app:/usr/src/app \
 	-p 5042:5042 \
 	$(IMAGE_NAME):0.1 \
-	python hello.py
+	python api/app.py
 
 app-test: app-build
 	docker run -it --rm --name $(CONTAINER_NAME) \
