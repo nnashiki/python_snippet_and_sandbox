@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "15ac9bba17c124f16bef15045c23edc209eb163bcd6efef04b4e33f4352d0709"
+            "sha256": "86b6ce867fb7fb7511c2c55bf8a33e02ec8f7e6376c7cc5103662595d35b110c"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -179,10 +179,10 @@
         },
         "marshmallow": {
             "hashes": [
-                "sha256:3133fb98afd627dcd8c06e4705f0ecea1b28003a53820d0266fa6c0ff7cf215c",
-                "sha256:6489e72ea75a30cb07686ce01e24bf65fc7f42edf429153a70abb9e38e56ef52"
+                "sha256:313836a251e67d2ef06631f3bddfffdd7d1c5b16b4efc76244afa6218c5e17b0",
+                "sha256:c850c60dbb840860f58f161b81ae25cf84807eeae3f9a1d9a2f8c704d6bd2b80"
             ],
-            "version": "==3.0.0rc2"
+            "version": "==3.0.0rc3"
         },
         "parse": {
             "hashes": [
@@ -196,6 +196,14 @@
                 "sha256:348f5f6c3edd4fd47c9cd65aed03ac1b31136d375aa63871a57d3e444c85655c"
             ],
             "version": "==2.2.1"
+        },
+        "pymysql": {
+            "hashes": [
+                "sha256:3943fbbbc1e902f41daf7f9165519f140c4451c179380677e6a848587042561a",
+                "sha256:d8c059dcd81dedb85a9f034d5e22dcb4442c0b201908bede99e306d65ea7c8e7"
+            ],
+            "index": "pypi",
+            "version": "==0.9.3"
         },
         "python-multipart": {
             "hashes": [
@@ -258,10 +266,10 @@
         },
         "starlette": {
             "hashes": [
-                "sha256:01f04283b49a8cb0c8921baa90dbafe47e953f0a265f6ebb38176038e4bd9bf8"
+                "sha256:d0f4b621d3aaf035e8cc3f97925a43dc175ccc00b2d6eb694a3a76368c32489e"
             ],
             "index": "pypi",
-            "version": "==0.9.9"
+            "version": "==0.9.10"
         },
         "urllib3": {
             "hashes": [
@@ -272,9 +280,9 @@
         },
         "uvicorn": {
             "hashes": [
-                "sha256:ab570ef3b088ddf30a8a2bb97f624c4eabe246301c2f21e38a48c82bfa3d8f52"
+                "sha256:52cd4652c84443a0972cbdc51982f8909aa3ed97f037aaf04b33ff1683111f18"
             ],
-            "version": "==0.3.24"
+            "version": "==0.3.25"
         },
         "uvloop": {
             "hashes": [
