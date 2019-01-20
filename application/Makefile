@@ -70,6 +70,7 @@ responder-run: app-build
 	--name $(CONTAINER_NAME) \
 	-v `pwd`/app:/usr/src/app \
 	-p 5042:5042 \
+	--link baseball_db:baseball_db \
 	$(IMAGE_NAME):0.1 \
 	python api/app.py
 
