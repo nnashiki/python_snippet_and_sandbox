@@ -1,5 +1,7 @@
-import responder
+import json
+
 import pymysql
+import responder
 
 api = responder.API()
 
@@ -20,13 +22,13 @@ def get_player_info(req, resp, *, id):
 
     try:
         with conn.cursor() as cursor:
-            sql = "SELECT id from batter"
+            sql = "SELECT name from batter"
             cursor.execute(sql)
             result = cursor.fetchall()
-            print(result)
+            print(result[0])
     finally:
         conn.close()
-    resp.text = result
+    resp.text = json.dumps(result, ensure_ascii=False)
 
 
 if __name__ == '__main__':
