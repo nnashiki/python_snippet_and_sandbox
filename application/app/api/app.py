@@ -28,7 +28,7 @@ def get_player_info(req, resp):
     finally:
         conn.close()
     resp.headers = {"Content-Type": "application/json; charset=utf-8"}
-    resp.text = json.dumps(result, ensure_ascii=False)
+    resp.content = json.dumps(result, ensure_ascii=False)
 
 
 if __name__ == '__main__':
