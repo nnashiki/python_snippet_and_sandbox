@@ -8,4 +8,10 @@ app-update-depedencies:
 	echo '' > requirements.lock
 	docker build . -f docker/Dockerfile \
 	--build-arg UPDATE_LOCK=1 --no-cache -t ${CONTAINER_NAME}
-	docker run -it --rm -p 8080:8080 ${CONTAINER_NAME} pip freeze > requirements.lock
+	docker run -it --rm ${CONTAINER_NAME} pip freeze > requirements.lock
+
+app-build:
+	docker build . -f docker/Dockerfile -t ${CONTAINER_NAME}
+
+app-bash:
+	docker run -it --rm ${CONTAINER_NAME}
