@@ -37,6 +37,7 @@ import bokeh.palettes as bp
 output_notebook()
 import pandas as pd
 import numpy as np
+from bokeh.palettes import *
 
 p = figure(
     title='タイトル',  # タイトルを入力
@@ -47,14 +48,15 @@ p = figure(
 )
 
 select_colum = ['year','h','name']
-player_list = ['坂本 勇人','山田 哲人']
+player_list = ['坂本 勇人','山田 哲人','筒香 嘉智']
 
 df_list= [bb_df[bb_df['name'] == player][select_colum] for player in player_list]
 
-for df in df_list:
+for i,df in enumerate(df_list):
     df = df.sort_values('year')
     p.line(
-    x=df['year'], y=df['h'], color='red', legend=df['name'].unique()[0])
+    x=df['year'], y=df['h'], color=Reds3[i], legend=df['name'].unique()[0])
+    
 
 
 
