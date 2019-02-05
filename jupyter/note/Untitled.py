@@ -45,6 +45,8 @@ import pandas as pd
 import numpy as np
 from bokeh.palettes import *
 
+#  ヒット数の推移
+
 p = figure(
     title=None,  # タイトルを入力
     x_axis_label='timestamp',  # x軸のラベル
@@ -55,7 +57,7 @@ p = figure(
     height=500,  # グラフの幅と高さの指定
 )
 
-select_colum = ['year','h','name']
+select_colum = ['year','h','name','hr']
 player_list = ['坂本 勇人','山田 哲人','筒香 嘉智']
 
 
@@ -66,18 +68,25 @@ for i,df in enumerate(df_list,3):
     p.line(
     x=df['year'], y=df['h'], color=Paired[12][i], legend=df['name'].unique()[0])
 
+#  ヒットと打撃の散布
     
 q = figure(
     title=None,  # タイトルを入力
     x_axis_label='timestamp',  # x軸のラベル
-    x_axis_type='datetime',
+
     y_axis_label='EP',  # y軸のラベル
-    x_range=(2005,2020),
-    y_range=(0,200),
+
+
     width=1000,
     height=500,  # グラフの幅と高さの指定
 )
-grid = gridplot([[p],[q]],toolbar_location=None)
 
+for i,df in enumerate(df_list,3):
+    df = df.sort_values('year')
+    q.circle(
+    x=df['h'], y=df['hr'], color=Paired[12][i], legend=df['name'].unique()[0],size=20)
+
+
+grid = gridplot([[p],[q]],toolbar_location=None)
 show(grid)
 
