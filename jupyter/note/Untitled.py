@@ -77,7 +77,7 @@ q = figure(
     width=1000,
     height=500,  # グラフの幅と高さの指定
 )
-grid = gridplot([[p,q]],toolbar_location=None)
+grid = gridplot([[p],[q]],toolbar_location=None)
 
 show(grid)
 
