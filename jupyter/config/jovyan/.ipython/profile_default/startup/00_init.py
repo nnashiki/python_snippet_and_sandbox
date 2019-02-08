@@ -3,7 +3,7 @@ import pandas as pd
 
 
 # 野球情報の取得
-db = pymysql.connect(host=  '172.17.0.2',
+db = pymysql.connect(host='baseball_db',
                      user='baseball_user',
                      password='baseball_pass',
                      db='baseball_db',
