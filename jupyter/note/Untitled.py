@@ -123,6 +123,22 @@ s.vbar(x='h', top='hr',source=ColumnDataSource(bb_df.groupby('name').max())
       )
 
 
-grid = gridplot([[p],[q],[r],[s]])
+t = figure(
+    title=None,  # タイトルを入力
+    x_axis_label='timestamp',  # x軸のラベル
+    y_axis_label='HR',  # y軸のラベル
+    width=1000,
+    height=500,  # グラフの幅と高さの指定
+)
+
+t.vbar(x='year', top='hr',source=ColumnDataSource(bb_df[bb_df['name']=='筒香 嘉智'])
+       ,width=0.5
+      )
+
+t.vbar(x='year', top='hr',source=ColumnDataSource(bb_df[bb_df['name']=='坂本 勇人'])
+       ,width=0.5
+      )
+
+grid = gridplot([[p],[q],[r],[s],[t]])
 show(grid)
 
