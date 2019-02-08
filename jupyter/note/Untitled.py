@@ -38,7 +38,7 @@ for df in df_list:
 from bokeh.io import output_notebook, show
 from bokeh.plotting import figure, output_file, show
 from bokeh.layouts import column,gridplot
-from bokeh.models import DataSource, RangeTool, HoverTool
+from bokeh.models import DataSource, RangeTool, HoverTool,ColumnDataSource,LabelSet
 import bokeh.palettes as bp
 output_notebook()
 import pandas as pd
@@ -46,6 +46,9 @@ import numpy as np
 from bokeh.palettes import *
 
 #  ヒット数の推移
+
+
+
 
 p = figure(
     title=None,  # タイトルを入力
@@ -72,9 +75,9 @@ for i,df in enumerate(df_list,3):
     
 q = figure(
     title=None,  # タイトルを入力
-    x_axis_label='timestamp',  # x軸のラベル
+    x_axis_label='H',  # x軸のラベル
 
-    y_axis_label='EP',  # y軸のラベル
+    y_axis_label='HR',  # y軸のラベル
 
 
     width=1000,
@@ -84,9 +87,42 @@ q = figure(
 for i,df in enumerate(df_list,3):
     df = df.sort_values('year')
     q.circle(
-    x=df['h'], y=df['hr'], color=Paired[12][i], legend=df['name'].unique()[0],size=20)
+    x=df['h'], y=df['hr'], color=Paired[12][i], legend=df['name'].unique()[0],size=20,name='a')
 
 
-grid = gridplot([[p],[q]],toolbar_location=None)
+r = figure(
+    title=None,  # タイトルを入力
+    x_axis_label='H',  # x軸のラベル
+
+    y_axis_label='HR',  # y軸のラベル
+
+
+    width=1000,
+    height=500,  # グラフの幅と高さの指定
+)
+
+source=ColumnDataSource(bb_df)
+r.circle(x='h', y='hr',source=source)
+labels = LabelSet(x='h', y='hr',
+              x_offset=5, y_offset=5, source=source)
+#r.add_layout(labels)
+
+s = figure(
+    title=None,  # タイトルを入力
+    x_axis_label='H',  # x軸のラベル
+
+    y_axis_label='HR',  # y軸のラベル
+
+
+    width=1000,
+    height=500,  # グラフの幅と高さの指定
+)
+
+s.vbar(x='h', top='hr',source=ColumnDataSource(bb_df.groupby('name').max())
+       ,width=0.5
+      )
+
+
+grid = gridplot([[p],[q],[r],[s]])
 show(grid)
 
