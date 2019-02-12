@@ -15,3 +15,7 @@ app-build:
 
 app-bash:
 	docker run -it --rm ${CONTAINER_NAME}
+
+app-abe:
+	docker run -it --rm -p 5050:5050  python_37_app python3 api/app3.py
+

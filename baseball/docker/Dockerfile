@@ -12,4 +12,4 @@ RUN if [ -z "$UPDATE_LOCK" ]; then pip install --no-cache-dir -r requirements.lo
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["/bin/bash"]
+COPY src/server/ ./

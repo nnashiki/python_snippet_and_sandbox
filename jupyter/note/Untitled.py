@@ -142,3 +142,73 @@ t.vbar(x='year', top='hr',source=ColumnDataSource(bb_df[bb_df['name']=='坂本 �
 grid = gridplot([[p],[q],[r],[s],[t]])
 show(grid)
 
+
+# In[ ]:
+
+
+from bokeh.models import AjaxDataSource, CustomJS
+adapter = CustomJS(code="""
+        const result = {x: [], y: []}
+        const pts = cb_data.response.points
+        for (i=0; i<pts.length; i++) {
+            result.x.push(pts[i][0])
+            result.y.push(pts[i][1])
+        }
+        return result
+    """)
+
+source = AjaxDataSource(data_url='http://localhost:5050/data',
+                            polling_interval=10000, adapter=adapter)
+
+p = figure(plot_height=300, plot_width=800, background_fill_color="lightgrey",
+               title="Streaming Noisy sin(x) via Ajax")
+p.circle('x', 'y', source=source)
+
+p.x_range.follow = "end"
+p.x_range.follow_interval = 10
+show(p)
+
+
+# In[ ]:
+
+
+from bokeh.models import AjaxDataSource, CustomJS
+adapter = CustomJS(code="""
+        const result = {x: [], y: []}
+        const pts = cb_data.response.points
+        for (i=0; i<pts.length; i++) {
+            result.x.push(pts[i][0])
+            result.y.push(pts[i][1])
+        }
+        return result
+    """)
+
+source = AjaxDataSource(data_url='http://localhost:5050/data2',
+                            polling_interval=10000, adapter=adapter)
+u = figure(plot_height=300, plot_width=800, 
+           y_axis_label='HR',  # y軸のラベル
+           background_fill_color="lightgrey",
+               title="Streaming Noisy sin(x) via Ajax")
+u.circle('x', 'y', source=source)
+
+u.x_range.follow = "end"
+u.x_range.follow_interval = 1
+show(u)
+
+
+# In[ ]:
+
+
+select_colum = ['year','hr','name']
+player_list = ['阿部 慎之助']
+
+abe_df = bb_df[bb_df['name'].isin(player_list)][select_colum]
+
+display(abe_df.sort_values('year').reset_index())
+
+
+# In[ ]:
+
+
+abe_df.sort_values('year').reset_index().hr.values
+
