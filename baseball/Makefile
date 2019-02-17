@@ -19,3 +19,5 @@ app-bash:
 app-abe:
 	docker run -it --rm -p 5050:5050  python_37_app python3 api/app3.py
 
+app-bokeh-js:
+	docker run -it --rm -p 5050:5050  python_37_app python3 api/bokeh_js.py
